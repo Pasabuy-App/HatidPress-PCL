@@ -35,7 +35,7 @@ namespace HatidPress.Documents
         }
         #endregion
         #region Methods
-        public async void GetData(string wp_id, string session_key, string preview, string type, Action<bool, string> callback)
+        public async void Insert(string wp_id, string session_key, string preview, string type, Action<bool, string> callback)
         {
             var dict = new Dictionary<string, string>();
             dict.Add("wpid", wp_id);
