@@ -19,7 +19,7 @@ namespace HatidPress.Documents
             get
             {
                 if (instance == null)
-                    instance = new InsertDoc);
+                    instance = new InsertDoc();
                 return instance;
             }
         }

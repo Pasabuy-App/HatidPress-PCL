@@ -19,7 +19,7 @@ namespace HatidPress.Deliveries
             get
             {
                 if (instance == null)
-                    instance = new ListingDel);
+                    instance = new ListingDel();
                 return instance;
             }
         }

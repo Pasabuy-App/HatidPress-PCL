@@ -20,7 +20,7 @@ namespace HatidPress.Documents
             get
             {
                 if (instance == null)
-                    instance = new DeleteDoc);
+                    instance = new DeleteDoc();
                 return instance;
             }
         }

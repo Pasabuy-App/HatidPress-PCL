@@ -19,7 +19,7 @@ namespace HatidPress.Documents
             get
             {
                 if (instance == null)
-                    instance = new UpdateDoc);
+                    instance = new UpdateDoc();
                 return instance;
             }
         }
