@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
-using HatidPress.Deliveries.Struck;
-
+using HatidPress.Deliveries.Struct;
 
 namespace HatidPress.Documents
 {
