@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
-using HatidPress.Controller.Struct;
+using HatidPress.Model;
 
-namespace HatidPress.Controller
+namespace HatidPress
 {
     public class Documents
     {
         #region Fields
         /// <summary>
-        /// Instance of Documents Class.
+        /// Instance of Documents Class with approve, delete, insert, list and update method.
         /// </summary>
         private static Documents instance;
         public static Documents Instance
@@ -46,7 +45,7 @@ namespace HatidPress.Controller
                 dict.Add("rider_id", rider_id);
             var content = new FormUrlEncodedContent(dict);
 
-            var response = await client.PostAsync(BaseClass.BaseDomainUrl + "/hatidpress/v1/documents/approve", content);
+            var response = await client.PostAsync(HPHost.Instance.BaseDomain + "/hatidpress/v1/documents/approve", content);
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)
@@ -75,7 +74,7 @@ namespace HatidPress.Controller
                 dict.Add("rider_id", rider_id);
             var content = new FormUrlEncodedContent(dict);
 
-            var response = await client.PostAsync(BaseClass.BaseDomainUrl + "/hatidpress/v1/documents/delete", content);
+            var response = await client.PostAsync(HPHost.Instance.BaseDomain + "/hatidpress/v1/documents/delete", content);
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)
@@ -106,7 +105,7 @@ namespace HatidPress.Controller
                 if (exp != "" ) { dict.Add("exp", exp); }
             var content = new FormUrlEncodedContent(dict);
 
-            var response = await client.PostAsync(BaseClass.BaseDomainUrl + "/hatidpress/v1/documents/insert", content);
+            var response = await client.PostAsync(HPHost.Instance.BaseDomain + "/hatidpress/v1/documents/insert", content);
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)
@@ -125,8 +124,8 @@ namespace HatidPress.Controller
         }
         #endregion
 
-        #region Listing Method
-        public async void Listing(string wp_id, string session_key, string status, string type, string docid, string app_status, Action<bool, string> callback)
+        #region List Method
+        public async void List(string wp_id, string session_key, string status, string type, string docid, string app_status, Action<bool, string> callback)
         {
             var dict = new Dictionary<string, string>();
                 dict.Add("wpid", wp_id);
@@ -137,7 +136,7 @@ namespace HatidPress.Controller
                 if (app_status != "") { dict.Add("app_status", app_status); }
             var content = new FormUrlEncodedContent(dict);
 
-            var response = await client.PostAsync(BaseClass.BaseDomainUrl + "/hatidpress/v1/documents/list", content);
+            var response = await client.PostAsync(HPHost.Instance.BaseDomain + "/hatidpress/v1/documents/list", content);
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)
@@ -168,7 +167,7 @@ namespace HatidPress.Controller
                 if (exp!= "") { dict.Add("exp", exp); }
             var content = new FormUrlEncodedContent(dict);
 
-            var response = await client.PostAsync(BaseClass.BaseDomainUrl + "/hatidpress/v1/documents/update", content);
+            var response = await client.PostAsync(HPHost.Instance.BaseDomain + "/hatidpress/v1/documents/update", content);
             response.EnsureSuccessStatusCode();
 
             if (response.IsSuccessStatusCode)

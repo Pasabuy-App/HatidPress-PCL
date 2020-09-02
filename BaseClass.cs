@@ -1,18 +1,37 @@
-﻿using System;
-
+﻿
 namespace HatidPress
 {
-    public class BaseClass
+    public class HPHost
     {
-        /// <summary>
-        /// Primary base domain url.
-        /// </summary>
-        public static string BaseDomainUrl
+        private static HPHost instance;
+        public static HPHost Instance
         {
             get
             {
-                return "http://localhost/wordpress/wp-json";
+                if (instance == null)
+                    instance = new HPHost();
+                return instance;
             }
         }
+
+        private bool isInitialized = false;
+        private string baseUrl = "http://localhost";
+        public string BaseDomain
+        {
+            get
+            {
+                return baseUrl + "/wp-json";
+            }
+        }
+
+        public void Initialized(string url)
+        {
+            if (!isInitialized)
+            {
+                baseUrl = url;
+                isInitialized = true;
+            }
+        }
+
     }
 }
